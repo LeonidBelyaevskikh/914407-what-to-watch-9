@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть»
 
 * Студент: [Leonid Belyaevskikh](https://up.htmlacademy.ru/react/9/user/914407).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий Марков](https://htmlacademy.ru/profile/id83550).
 
 ---
 
