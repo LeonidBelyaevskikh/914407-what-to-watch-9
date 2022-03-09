@@ -1,14 +1,21 @@
-type Film = {
-  name: string,
+import { Film } from '../../types/films';
+import { Link } from 'react-router-dom';
+type FilmCardProps = {
+  film: Film,
+  setActive: React.Dispatch<React.SetStateAction<number>>;
 }
-function FilmCard({name}: Film): JSX.Element {
+
+function FilmCard({film, setActive}: FilmCardProps): JSX.Element {
+  const handleMouseEnter = () => {
+    setActive(film.id);
+  };
   return (
-    <article className="small-film-card catalog__films-card">
+    <article className="small-film-card catalog__films-card" onMouseEnter={ handleMouseEnter } >
       <div className="small-film-card__image">
-        <img src="img/midnight-special.jpg" alt="Midnight Special" width="280" height="175" />
+        <img src={film.previewImage} alt={film.name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">{name}</a>
+        <Link className="small-film-card__link" to={`/films/${film.id}`}>{film.name}</Link>
       </h3>
     </article>
   );

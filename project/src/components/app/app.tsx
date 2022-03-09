@@ -10,23 +10,23 @@ import Player from '../player/player';
 import NotFound from '../not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 
-type Film = {
-  name: string,
-  genre: string,
-  releaseDate: number,
-}
+import { Film } from '../../types/films';
+import { PromoFilm } from '../../types/promoFilm';
+import { Review } from '../../types/reviews';
+
 type AppProps = {
-  promoFilm: Film,
-  films: string[],
+  promoFilm: PromoFilm,
+  films: Film[],
+  reviews: Review[]
 };
 
-function App({promoFilm, films}: AppProps): JSX.Element {
+function App({promoFilm, films, reviews}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Main promoFilm={promoFilm} films={films} />}
+          element={<Main promoFilm={promoFilm} films={films}/>}
         />
         <Route
           path={AppRoute.SignIn}
@@ -38,21 +38,21 @@ function App({promoFilm, films}: AppProps): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.NoAuth}
             >
-              <MyList />
+              <MyList films={films}/>
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Film}
-          element={<MoviePage />}
+          element={<MoviePage films={films}/>}
         />
         <Route
           path={AppRoute.AddReview}
-          element={<AddReview />}
+          element={<AddReview films={films}/>}
         />
         <Route
           path={AppRoute.Player}
-          element={<Player />}
+          element={<Player films={films}/>}
         />
         <Route
           path="*"

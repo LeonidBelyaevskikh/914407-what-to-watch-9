@@ -1,14 +1,12 @@
-import FilmCard from '../film-card/film-card';
+import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
 
-type Film = {
-  name: string,
-  genre: string,
-  releaseDate: number,
-}
+import { Film } from '../../types/films';
+import { PromoFilm } from '../../types/promoFilm';
+
 type MainProps = {
-  promoFilm: Film,
-  films: string[],
+  promoFilm: PromoFilm,
+  films: Film[],
 };
 function Main({promoFilm, films}: MainProps): JSX.Element {
   return (<>
@@ -102,9 +100,7 @@ function Main({promoFilm, films}: MainProps): JSX.Element {
           </li>
         </ul>
 
-        <div className="catalog__films-list">
-          { films.map((film) => <FilmCard name={film} key={film}/> ) }
-        </div>
+        <FilmsList films={films}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>

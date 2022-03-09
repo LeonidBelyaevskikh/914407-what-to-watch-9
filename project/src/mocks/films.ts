@@ -6,7 +6,7 @@ export const films: Film[] = [
     name: 'The Grand Budapest Hotel',
     posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
     previewImage: 'img/the-grand-budapest-hotel-poster.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/the-grand-budapest-hotel-poster.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -28,7 +28,7 @@ export const films: Film[] = [
     name: 'Fantastic Beasts: The Crimes of Grindelwald',
     posterImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     previewImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -50,7 +50,7 @@ export const films: Film[] = [
     name: 'Bohemian Rhapsody',
     posterImage: 'img/bohemian-rhapsody.jpg',
     previewImage: 'img/bohemian-rhapsody.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/bohemian-rhapsody.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -72,7 +72,7 @@ export const films: Film[] = [
     name: 'Macbeth',
     posterImage: 'img/macbeth.jpg',
     previewImage: 'img/macbeth.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/macbeth.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -94,7 +94,7 @@ export const films: Film[] = [
     name: 'Aviator',
     posterImage: 'img/aviator.jpg',
     previewImage: 'img/aviator.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/aviator.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -121,7 +121,7 @@ export const films: Film[] = [
     name: 'We need to talk about Kevin',
     posterImage: 'img/we-need-to-talk-about-kevin.jpg',
     previewImage: 'img/we-need-to-talk-about-kevin.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/we-need-to-talk-about-kevin.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -143,7 +143,7 @@ export const films: Film[] = [
     name: 'What We Do in the Shadows',
     posterImage: 'img/what-we-do-in-the-shadows.jpg',
     previewImage: 'img/what-we-do-in-the-shadows.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/what-we-do-in-the-shadows.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -165,7 +165,7 @@ export const films: Film[] = [
     name: 'Revenant',
     posterImage: 'img/revenant.jpg',
     previewImage: 'img/revenant.jpg',
-    backgroundImage: '',
+    backgroundImage: 'img/revenant.jpg',
     backgroundColor: '',
     videoLink:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -182,4 +182,4 @@ export const films: Film[] = [
     released: 2015,
     isFavorite: true,
   },
-]
+];
