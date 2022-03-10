@@ -9,12 +9,10 @@ type FilmsListProps = {
 }
 
 function FilmsList ({films}: FilmsListProps): JSX.Element {
-
-  const [activeFilmCard, setActiveFilmCard] = useState(0);
+  const [activeFilmCard, setActiveFilmCard] = useState<number | undefined>(undefined);
   return (
     <div className="catalog__films-list">
-      {films.map((film) => <FilmCard film={film} key={film.id} setActive={setActiveFilmCard}/>)}
-      {activeFilmCard}
+      {films.map((film) => <FilmCard film={film} key={film.id} setActive={setActiveFilmCard} activeFilmCard={activeFilmCard}/>)}
     </div>
   );
 }

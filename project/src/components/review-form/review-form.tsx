@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const ratingValues: number[] = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 function ReviewForm(): JSX.Element {
-  const [rating, setRating] = useState(8);
+  const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
   return (
     <div className="add-review">

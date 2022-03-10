@@ -7,12 +7,13 @@ type PlayerProps = {
 
 function Player({films}: PlayerProps): JSX.Element {
   const params = useParams();
-  const currentFilm = films.find((el) => el.id === Number(params.id));
+  const id = `${params.id}`;
+  const currentFilm = films.find((el) => el.id === Number.parseInt(id, 10)) || films[0];
 
   const togglerStyle = {left: '30%'};
   return (
     <div className="player">
-      <video src={currentFilm?.videoLink} className="player__video" poster={currentFilm?.backgroundImage}></video>
+      <video src={currentFilm.videoLink} className="player__video" poster={currentFilm.backgroundImage}></video>
 
       <button type="button" className="player__exit">Exit</button>
 

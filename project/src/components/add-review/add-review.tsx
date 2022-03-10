@@ -10,13 +10,14 @@ type AddReviewProps = {
 
 function AddReview({films}: AddReviewProps): JSX.Element {
   const params = useParams();
-  const currentFilm = films.find((el) => el.id === Number(params.id));
+  const id = `${params.id}`;
+  const currentFilm = films.find((el) => el.id === Number.parseInt(id, 10)) || films[0];
 
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={currentFilm?.backgroundImage} alt={currentFilm?.name} />
+          <img src={currentFilm.backgroundImage} alt={currentFilm.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -27,10 +28,10 @@ function AddReview({films}: AddReviewProps): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`/films/${currentFilm?.id}`} className="breadcrumbs__link">{currentFilm?.name}</Link>
+                <Link to={`/films/${currentFilm.id}`} className="breadcrumbs__link">{currentFilm.name}</Link>
               </li>
               <li className="breadcrumbs__item">
-                <Link className="breadcrumbs__link" to={`/films/${currentFilm?.id}/review`}>Add review</Link>
+                <Link className="breadcrumbs__link" to={`/films/${currentFilm.id}/review`}>Add review</Link>
               </li>
             </ul>
           </nav>
@@ -48,7 +49,7 @@ function AddReview({films}: AddReviewProps): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={currentFilm?.backgroundImage} alt={currentFilm?.name} width="218" height="327" />
+          <img src={currentFilm.backgroundImage} alt={currentFilm.name} width="218" height="327" />
         </div>
       </div>
       <ReviewForm />
