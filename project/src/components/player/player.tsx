@@ -1,8 +1,19 @@
-function Player(): JSX.Element {
+import {Film} from '../../types/films';
+import {useParams} from 'react-router-dom';
+
+type PlayerProps = {
+  films: Film[],
+}
+
+function Player({films}: PlayerProps): JSX.Element {
+  const params = useParams();
+  const id = `${params.id}`;
+  const currentFilm = films.find((el) => el.id === Number.parseInt(id, 10)) || films[0];
+
   const togglerStyle = {left: '30%'};
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={currentFilm.videoLink} className="player__video" poster={currentFilm.backgroundImage}></video>
 
       <button type="button" className="player__exit">Exit</button>
 

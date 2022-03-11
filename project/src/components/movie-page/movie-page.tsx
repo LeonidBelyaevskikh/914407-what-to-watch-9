@@ -1,12 +1,22 @@
 import Logo from '../logo/logo';
+import { Film } from '../../types/films';
+import { useParams, Link } from 'react-router-dom';
 
-function MoviePage(): JSX.Element {
+type MoviePageProps = {
+  films: Film[],
+}
+
+function MoviePage({films}: MoviePageProps): JSX.Element {
+  const params = useParams();
+  const id = `${params.id}`;
+  const currentFilm = films.find((el) => el.id === Number.parseInt(id, 10)) || films[0];
+
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={currentFilm.backgroundImage} alt={currentFilm.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -28,10 +38,10 @@ function MoviePage(): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{currentFilm.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
+                <span className="film-card__genre">{currentFilm.genre}</span>
+                <span className="film-card__year">{currentFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -47,7 +57,7 @@ function MoviePage(): JSX.Element {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                <Link to={`/films/${currentFilm.id}/review`} className="btn film-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -56,7 +66,7 @@ function MoviePage(): JSX.Element {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={currentFilm.backgroundImage} alt={currentFilm.name}  width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
@@ -75,10 +85,10 @@ function MoviePage(): JSX.Element {
               </nav>
 
               <div className="film-rating">
-                <div className="film-rating__score">8,9</div>
+                <div className="film-rating__score">{currentFilm.rating}</div>
                 <p className="film-rating__meta">
                   <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">240 ratings</span>
+                  <span className="film-rating__count">{`${currentFilm.scoresCount} ratings`}</span>
                 </p>
               </div>
 
@@ -89,7 +99,7 @@ function MoviePage(): JSX.Element {
 
                 <p className="film-card__director"><strong>Director: Wes Anderson</strong></p>
 
-                <p className="film-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+                <p className="film-card__starring"><strong>Starring: {currentFilm.starring.map((el, index) => <span key={el}>{el}{index !== (currentFilm.starring.length - 1)  ? ', ' : ''}</span>)}</strong></p>
               </div>
             </div>
           </div>
