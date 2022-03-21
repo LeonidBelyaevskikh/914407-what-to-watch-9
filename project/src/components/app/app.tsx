@@ -44,7 +44,7 @@ function App({promoFilm, films, reviews}: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Film}
-          element={<MoviePage films={films}/>}
+          element={<MoviePage films={films} reviews={reviews}/>}
         />
         <Route
           path={AppRoute.AddReview}
