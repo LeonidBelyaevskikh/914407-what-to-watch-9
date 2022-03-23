@@ -22,3 +22,5 @@ export enum TabNames {
 export const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export const DEFAULT_ACTIVE_GENRE = 'All genres';
+
+export const FILMS_COUNT = 8;

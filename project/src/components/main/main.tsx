@@ -1,11 +1,15 @@
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
 import GenresList from '../genres-list/genres-list';
+import ShowMoreBtn from '../show-more-btn/show-more-btn';
 
 import { Film } from '../../types/films';
 import { PromoFilm } from '../../types/promoFilm';
 
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { useEffect } from 'react';
+import { resetFilmsCount } from '../../store/action';
+
 
 type MainProps = {
   promoFilm: PromoFilm,
@@ -13,7 +17,13 @@ type MainProps = {
 };
 function Main({promoFilm, films}: MainProps): JSX.Element {
 
-  const { filteredFilms } = useAppSelector((state) => state);
+  const { filteredFilms, filmsCount } = useAppSelector((state) => state);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(resetFilmsCount());
+  },[filteredFilms]);
 
   return (<>
     <section className="film-card">
@@ -75,11 +85,9 @@ function Main({promoFilm, films}: MainProps): JSX.Element {
 
         <GenresList films={films}/>
 
-        <FilmsList films={filteredFilms}/>
+        <FilmsList films={filteredFilms.slice(0, filmsCount)}/>
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        {((filteredFilms.length - filmsCount) > 0) && <ShowMoreBtn/>}
       </section>
 
       <footer className="page-footer">
