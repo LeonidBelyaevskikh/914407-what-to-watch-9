@@ -3,21 +3,14 @@ import Logo from '../logo/logo';
 import GenresList from '../genres-list/genres-list';
 import ShowMoreBtn from '../show-more-btn/show-more-btn';
 
-import { Film } from '../../types/films';
-import { PromoFilm } from '../../types/promoFilm';
-
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
 import { resetFilmsCount } from '../../store/action';
 
 
-type MainProps = {
-  promoFilm: PromoFilm,
-  films: Film[],
-};
-function Main({promoFilm, films}: MainProps): JSX.Element {
+function Main(): JSX.Element {
 
-  const { filteredFilms, filmsCount } = useAppSelector((state) => state);
+  const { films, filteredFilms, filmsCount, promoFilm } = useAppSelector((state) => state);
 
   const dispatch = useAppDispatch();
 
@@ -58,7 +51,7 @@ function Main({promoFilm, films}: MainProps): JSX.Element {
             <h2 className="film-card__title">{promoFilm.name}</h2>
             <p className="film-card__meta">
               <span className="film-card__genre">{promoFilm.genre}</span>
-              <span className="film-card__year">{promoFilm.releaseDate}</span>
+              <span className="film-card__year">{promoFilm.released}</span>
             </p>
 
             <div className="film-card__buttons">
