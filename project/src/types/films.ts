@@ -17,3 +17,5 @@ export type Film = {
   starring: string[];
   videoLink: string;
 }
+
+export type Films = Film[]

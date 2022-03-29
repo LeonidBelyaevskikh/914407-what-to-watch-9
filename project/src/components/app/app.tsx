@@ -9,24 +9,31 @@ import AddReview from '../add-review/add-review';
 import Player from '../player/player';
 import NotFound from '../not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
+import LoadingScreen from '../loading-screen/loading-screen';
 
-import { Film } from '../../types/films';
-import { PromoFilm } from '../../types/promoFilm';
+import {useAppSelector} from '../../hooks';
+
 import { Review } from '../../types/reviews';
 
 type AppProps = {
-  promoFilm: PromoFilm,
-  films: Film[],
-  reviews: Review[]
-};
+  reviews: Review[];
+}
 
-function App({promoFilm, films, reviews}: AppProps): JSX.Element {
+function App({reviews}: AppProps): JSX.Element {
+  const { films, isDataLoaded } = useAppSelector((state) => state);
+
+  if (!isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Main promoFilm={promoFilm} films={films}/>}
+          element={<Main/>}
         />
         <Route
           path={AppRoute.SignIn}
